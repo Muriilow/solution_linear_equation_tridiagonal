@@ -12,7 +12,6 @@ typedef struct {
 } Edo;
 
 // Funções auxiliares
-void genEdo(Edo *edo); 
 void prnEDOsl (Edo *edoeq);
 
 #endif // __EQDIFF_H__

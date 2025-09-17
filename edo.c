@@ -6,7 +6,7 @@
 #include "edo.h"
 
 // Exibe SL na saída padrão
-void prnEDOSL (Edo *edoeq)
+void prnEDOsl (Edo *edoeq)
 {
     int n = edoeq->n, i, j;
     double x, b, d, di, ds,rx;
@@ -43,16 +43,4 @@ void prnEDOSL (Edo *edoeq)
 
         printf ("\n");
     }
-}
-void genEdo(Edo* edo)
-{
-    int result; 
-    scanf("%d", &edo->n); 
-    scanf("%lf %lf", &edo->a, &edo->b);
-    scanf("%lf %lf", &edo->yA, &edo->yB);
-    scanf("%lf %lf", &edo->p, &edo->q);
-
-    result = scanf("%lf %lf %lf %lf", &edo->r1, &edo->r2, &edo->r3, &edo->r4);
-    
-    prnEDOSL(edo);
 }
