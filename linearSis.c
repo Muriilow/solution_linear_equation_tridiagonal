@@ -56,22 +56,6 @@ void freeLinearSis (LinearSis *SL)
     */
 }
 
-void prnLinearSis (LinearSis *SL)
-{
-}
-// Calcula a norma máxima do erro absoluto aproximado de 2 vetores
-double normaMax(double *X1, double *X0, int n)
-{
-
-    double k, norma = ABS(X1[0] - X0[0]);
-
-    for (int i=1; i < n; ++i)
-        if ((k = ABS(X1[i] - X0[i])) > norma)
-            norma = k;
-
-    return norma;
-}
-
 // Calcula a norma euclidiana de um vetor
 double normaL2(double *X, int n)
 {
