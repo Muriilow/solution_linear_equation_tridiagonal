@@ -28,7 +28,7 @@ int main()
         prnEDOsl(&edo);
 
         LinearSis *linearSis = genLinearSis(&edo);
-
+        double time = timestamp();
         char region_name[50];
         snprintf(region_name, sizeof(region_name), "GAUSS_SEIDEL_%d", i);
         LIKWID_MARKER_START(region_name);
@@ -42,10 +42,11 @@ int main()
         printf("\n\n"); 
 
         printf("%d\n", iter);
-
+        printf(FORMAT, time);
         printf(FORMAT, norma);
         printf("\n\n");
         i++;
+        time = timestamp() - time;
     }
     while(scanf("%lf %lf %lf %lf", &edo.r1, &edo.r2, &edo.r3, &edo.r4) == 4);
 

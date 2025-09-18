@@ -21,17 +21,3 @@ double timestamp (void)
     return ( (double) tp.tv_sec*1.0e3 + (double) tp.tv_nsec*1.0e-6 );
 }
 
-/* Gera string '<baseName>_n'
- * Por exemplo, se baseName = "ABC" e n = 10,
- *  Função retorna a string "ABC_10"
- * Útil para gerar marcadores para LIKWID
- */
-char* markerName(char* baseName, int n)
-{
-    char region_name[50];
-    snprintf(region_name, sizeof(region_name), "GAUSS_SEIDEL_%d", n);
-
-    return ;        
-
-}
-

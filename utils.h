@@ -13,7 +13,6 @@
 
 // Funções
 double timestamp(void);
-char* markerName(char* baseName, int n);
 
 #endif // __UTILS_H__
 
