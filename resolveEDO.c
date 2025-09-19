@@ -5,6 +5,8 @@
 #include "linearSis.h"
 #include "utils.h"
 
+#define FORMAT_SHORT "%16.8e"
+
 int main() 
 {
     LIKWID_MARKER_INIT;
@@ -43,7 +45,7 @@ int main()
 
         printf("%d\n", iter);
         printf(FORMAT, time);
-        printf(FORMAT, norma);
+        printf(FORMAT_SHORT, norma);
         printf("\n\n");
         i++;
         time = timestamp() - time;
