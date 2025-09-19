@@ -43,17 +43,15 @@ LinearSis *genLinearSis (Edo *edo)
 
 // Liberacao de memória
 void freeLinearSis (LinearSis *SL)
-{
-    /*
+{ 
     if (SL) {
-        if (SL->A) {
-            if (SL->A[0]) free (SL->A[0]);
-            free (SL->A);
-        }
-        if (SL->b) free(SL->b);
+        free(SL->D);
+        free(SL->Di);
+        free(SL->Ds);
+        free(SL->X);
+        free(SL->B);
         free(SL);
     }
-    */
 }
 
 // Calcula a norma euclidiana de um vetor

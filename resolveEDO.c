@@ -1,20 +1,25 @@
 #include <stdio.h>
+#include <fenv.h>
 #include <likwid.h>
 #include "edo.h"
 #include "gaussSeidel.h"
 #include "linearSis.h"
 #include "utils.h"
 
+//Murilo de Paula Bob
+//Formatacao para o print de tempo
 #define FORMAT_SHORT "%16.8e"
 
 int main() 
 {
     LIKWID_MARKER_INIT;
+    fesetround(FE_DOWNWARD);
     Edo edo;
     double norma;
     int iter;
     int result; 
-    int i = 0;
+    int marker_it = 0;
+
     //Registrando informações da edo 
     scanf("%d", &edo.n); 
     scanf("%lf %lf", &edo.a, &edo.b);
@@ -30,25 +35,35 @@ int main()
         prnEDOsl(&edo);
 
         LinearSis *linearSis = genLinearSis(&edo);
-        double time = timestamp();
-        char region_name[50];
-        snprintf(region_name, sizeof(region_name), "GAUSS_SEIDEL_%d", i);
-        LIKWID_MARKER_START(region_name);
-        iter = gaussSeidel(linearSis, ERRO, 100, &norma);
-        LIKWID_MARKER_STOP(region_name);
 
+        double time = timestamp();
+
+        //Mudando o nome para cada iteracao
+        char region_name[50];
+        snprintf(region_name, sizeof(region_name), "GAUSS_SEIDEL_%d", marker_it);
+        LIKWID_MARKER_START(region_name);
+
+        iter = gaussSeidel(linearSis, ERRO, 100, &norma);
+
+        LIKWID_MARKER_STOP(region_name);
+        
+        time = timestamp() - time;
+
+        //Fazendo print do restante das informacoes
         printf("\n"); 
 
         for (int i = 0; i < edo.n; i++)
             printf(FORMAT, linearSis->X[i]);
-        printf("\n\n"); 
-
+        printf("\n"); 
+        
         printf("%d\n", iter);
-        printf(FORMAT, time);
-        printf(FORMAT_SHORT, norma);
+        printf(FORMAT, norma);
+        printf("\n");
+        printf(FORMAT_SHORT, time);
         printf("\n\n");
-        i++;
-        time = timestamp() - time;
+        
+        freeLinearSis(linearSis);
+        marker_it++;
     }
     while(scanf("%lf %lf %lf %lf", &edo.r1, &edo.r2, &edo.r3, &edo.r4) == 4);
 

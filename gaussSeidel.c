@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "gaussSeidel.h"
 
-// Método de Gauss-Seidel clássico
+// Método de Gauss-Seidel para matrizes tridiagonais
 int gaussSeidel (LinearSis *SL, double erro, int maxit, double *norma)
 {
     int n = SL->n;
@@ -19,7 +19,7 @@ int gaussSeidel (LinearSis *SL, double erro, int maxit, double *norma)
                 sum += SL->Di[i] * SL->X[i-1];
             if(i < n-1)
                 sum +=  SL->Ds[i] * SL->X[i+1];
-
+            
             SL->X[i] = (SL->B[i] - sum) / SL->D[i];
         }
 

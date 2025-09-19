@@ -1,0 +1,11 @@
+Murilo de Paula Bob - 20242184
+
+# Funcionamento do script do likwid 
+
+> ./flops.sh < arquivo 
+
+"arquivo" seria o conteudo de entrada da edo. (O SCRIPT NAO CHECA POR ENTRADAS DIRETAS DO TERMINAL)
+O script shell cria um arquivo temporario na maquina para jogar o conteudo de entrada nele e filtrar. 
+O script executa o programa duas vezes, uma vez sem likwid para a saida padrao e outra com o likwid. 
+
+Os arquivos .c estao separados corretamente. 
